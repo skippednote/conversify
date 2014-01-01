@@ -8,5 +8,5 @@ autopublish
 insecure
 preserve-inputs
 bootstrap
-accounts-base
 accounts-twitter
+accounts-ui-bootstrap-dropdown

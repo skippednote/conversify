@@ -1,11 +1,29 @@
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 </head>
 <body>
-    {{> header }}
+    <div class="navbar">
+        <div class="navbar-inner">
+            <a href="/" class="brand">Conversify</a>
+            <ul class="nav pull-right">
+                <li>
+                    {{loginButtons}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class='row fluid'>
+        <div class="container">
+            {{#if currentUser}}
+                {{> messageList}}
+                {{> newMessage}}
+            {{else}}
+                <div class="well">
+                    <h3 class=text-center>Sign in to start chatting</h3>
+                </div>
+            {{/if}}
+        </div>
+    </div>
 </body>
-
-<template name="header">
-    <a href="/">Home</a>
-</template>
