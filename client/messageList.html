@@ -1,10 +1,24 @@
 <template name='messageList'>
-    <h1>Chat</h1>
-    <table class="table table-striped">
+   <ul class="messages">
     {{#each msgs}}
-        <tr>
-            <td class="author-message">{{{message}}}</td> - <td class="author-meta"><img src="{{avatar}}" alt="{{author}}"> {{author}} </td>
-        </tr>
+    {{#if myMsgs}}
+    <li class=me>
+        <div class="author-meta"><img src="{{avatar}}" alt="{{author}}"> <br> <span class="author">{{author}}</span> </div>
+            <div class="author-message"><span class=msg>{{{message}}}</span>
+                <small>( {{format-date date}} )</small>
+                {{#if myMsgs}}
+                    <button class="delete">x</delete>
+                {{/if}}
+        </div>
+        </li>
+        {{else}}
+        <li class=you>
+            <div class="author-message"><span class=msg>{{{message}}}</span>
+            <small>( {{format-date date}} )</small>
+            </div>
+            <div class="author-meta"><img src="{{avatar}}" alt="{{author}}"> <br> <span class="author">{{author}}</span> </div>
+        </li>
+        {{/if}}
     {{/each}}
-    </table>
+    </ul>
 </template>

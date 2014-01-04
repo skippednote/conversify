@@ -4,11 +4,10 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-autopublish
-insecure
 preserve-inputs
 bootstrap
 accounts-twitter
 accounts-ui-bootstrap-dropdown
-accounts-facebook
 emoji
+less
+autopublish
