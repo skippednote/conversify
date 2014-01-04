@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Application Template</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          
+          <h1 id="application-template">Application Template</h1>
+<p>The Appplication template is the base of our application, it gets rendered on every page and has template partials where other templates get rendered.
+We start with the <code>head</code> tags instead of <code>html</code> as Meteor will automatically add in the relavant HTML5 <code>doctype</code> and <code>html</code> tags. If other templates have the <code>head</code> tags, those will be concatenated into one. We have UTF-8 tag for correct character encoding and viewport meta tag for scaling the content as per the viewport of the device it&#39;s getting rendered on.</p>
+<p>Next we have the menubar for our application, it has the link to homepage with name of the application, Conversify as the link to homepage. We have added some classes from Bootstrap to add a bit of styling to the application. On the right end we have option to Sign-in to the Application, which is necessary as one can&#39;t use it without authentication. For authentication of users we are using Twitter OAuth. On signing in well will get an option to Sign out. We are using <code>{{loginButton}}</code> handlebars partial to replace it with the Meteor authentication interface.</p>
+<p>In the section below menubar we are rendering two more partials, one for rendering the messages list and other for the form for sending messages. These partials are wrapped in the <code>{{#if currentUser}}</code> handlebars block, this checks whether the user if authorized. If the user if signed in then it will show the messages list and message form to add new  messages else we will get a notification prompting us to login.</p>
+
+          
+            <div class='highlight'><pre>&lt;head&gt;
+    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;
+    &lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div <span class="class"><span class="keyword">class</span>="<span class="title">navbar</span>"&gt;</span>
+        &lt;div <span class="class"><span class="keyword">class</span>="<span class="title">navbar</span>-<span class="title">inner</span>"&gt;</span>
+            &lt;a href=<span class="string">"/"</span> <span class="class"><span class="keyword">class</span>="<span class="title">brand</span>"&gt;<span class="title">Conversify</span>&lt;/<span class="title">a</span>&gt;</span>
+              &lt;a <span class="class"><span class="keyword">class</span>="<span class="title">btn</span> <span class="title">btn</span>-<span class="title">navbar</span>" <span class="title">data</span>-<span class="title">toggle</span>="<span class="title">collapse</span>" <span class="title">data</span>-<span class="title">target</span>=".<span class="title">nav</span>-<span class="title">collapse</span>"&gt;</span>
+                &lt;span <span class="class"><span class="keyword">class</span>="<span class="title">icon</span>-<span class="title">bar</span>"&gt;&lt;/<span class="title">span</span>&gt;</span>
+                &lt;span <span class="class"><span class="keyword">class</span>="<span class="title">icon</span>-<span class="title">bar</span>"&gt;&lt;/<span class="title">span</span>&gt;</span>
+                &lt;span <span class="class"><span class="keyword">class</span>="<span class="title">icon</span>-<span class="title">bar</span>"&gt;&lt;/<span class="title">span</span>&gt;</span>
+              &lt;/a&gt;
+            &lt;ul <span class="class"><span class="keyword">class</span>="<span class="title">nav</span> <span class="title">pull</span>-<span class="title">right</span>"&gt;</span>
+                &lt;li&gt;
+                    {{loginButtons}}
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div <span class="class"><span class="keyword">class</span>='<span class="title">row</span> <span class="title">fluid</span>'&gt;</span>
+        &lt;div <span class="class"><span class="keyword">class</span>="<span class="title">container</span>"&gt;</span>
+            {{<span class="comment">#if currentUser}}</span>
+                {{&gt; messageList}}
+                {{&gt; newMessage}}
+            {{<span class="keyword">else</span>}}
+                &lt;div <span class="class"><span class="keyword">class</span>="<span class="title">well</span>"&gt;</span>
+                    &lt;h3 <span class="class"><span class="keyword">class</span>=<span class="title">text</span>-<span class="title">center</span>&gt;<span class="title">Sign</span> <span class="title">in</span> <span class="title">to</span> <span class="title">start</span> <span class="title">chatting</span>&lt;/<span class="title">h3</span>&gt;</span>
+                &lt;/div&gt;
+            {{/<span class="keyword">if</span>}}
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;</pre></div>
+          
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="collection.html">
+                    collection.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="bootstrap.html">
+                    bootstrap.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="v8.html">
+                    v8.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="handlebars.html">
+                    handlebars.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="javascript.html">
+                    javascript.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="meteor.html">
+                    meteor.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="node.html">
+                    node.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="nosql.html">
+                    nosql.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="v8.html">
+                    v8.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="websocket.html">
+                    websocket.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="handlebarsHelper.html">
+                    handlebarsHelper.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messagelistHelper.html">
+                    messagelistHelper.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="newmessageHelper.html">
+                    newmessageHelper.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="about.html">
+                    about.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="certificate.html">
+                    certificate.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="application.html">
+                    application.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messageList.html">
+                    messageList.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="newMessage.html">
+                    newMessage.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Technologies</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          
+          <h1 id="technologies">Technologies</h1>
+<h2 id="javascript">JavaScript</h2>
+<p>JavaScript, aka Mocha, aka LiveScript, aka JScript, aka ECMAScript, is one of the world’s most popular programming languages. Virtually every personal computer in the world has at least one JavaScript interpreter installed on it and in active use. JavaScript’s popularity is due entirely to its role as the scripting language of the WWW, is one of the world’s most popular programming languages.</p>
+<p>JavaScript has a syntactic similarity to Java, much as Java has to C. But it is no more a subset of Java than Java is a subset of C. It is better than Java in the applications that Java (fka Oak) was originally intended for. JavaScript was not developed at Sun Microsystems, the home of Java. JavaScript was developed at Netscape. It was originally called LiveScript, but that name wasn’t confusing enough. The -Script suffix suggests that it is not a real programming language, that a scripting language is less than a programming language. But it is really a matter of specialization. Compared to C, JavaScript trades performance for expressive power and dynamism.</p>
+<h3 id="typecasting">Typecasting</h3>
+<p>JavaScript was designed to run in Netscape Navigator. Its success there led to it becoming standard equipment in virtually all web browsers. JavaScript is well suited to a large class of non-Web-related applications</p>
+<h3 id="moving-target">Moving Target</h3>
+<p>The first versions of JavaScript were quite weak. They lacked exception handling, inner functions, band inheritance. In its present form, it is now a complete object-oriented programming language. But many opinions of the language are based on its immature forms.</p>
+<p>The ECMA committee that has stewardship over the language is developing extensions which, while well intentioned, will aggravate one of the language’s biggest problems.</p>
+<h3 id="object-oriented">Object Oriented</h3>
+<p>JavaScript is purely Object Oriented. It has objects which can contain data and methods that act upon that data. Objects can contain other objects. It does not have classes, but it does have constructors which do what classes do, including acting as containers for class variables and methods. It does not haveclass-oriented inheritance, but it does have prototype-oriented inheritance.</p>
+<h2 id="node-js">Node.js</h2>
+<p>Node.js is very popular and young (it debuted in 2009). It is the second most watched project on GitHub, has quite a following in its Google group and IRC channel and has more than 28,000 community modules published in NPM (the package manager).</p>
+<p>The official site [nodejs.org] defines Node.js as “a platform built on Chrome&#39;s JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices”.
+Current Version: v0.10.24</p>
+<p>Since the release of Google Chrome in late 2008, JavaScript performance has been improving at an incredibly fast rate due to heavy competition between browser vendors (i.e. Mozilla, Microsoft, Apple, Opera, and Google). The performance of modern JavaScript virtual machines is literally changing the type of applications we can build on the web. A compelling example of this is jslinux [a PC emulator running in JavaScript where you can load a Linux kernel, interact with the terminal session, and compile a C program all in your browser].</p>
+<p>Node.js specifically uses V8, the virtual machine that powers Google Chrome, for server-side programming. V8 gives a huge boost in performance because it cuts out the middleman, preferring straight compilation into native machine code over executing bytecode or using an interpreter. Because Node.js uses JavaScript on the server there are other benefits:</p>
+<ul>
+<li><p>Developers can write web applications in one language, which helps by reducing the &quot;context&quot; switch between client and server development, and allowing for code sharing between client and server (e.g. reusing the same code for form validation or game logic).</p>
+</li>
+<li><p>JSON is a very popular data interchange format today and it is native JavaScript.</p>
+</li>
+<li><p>JavaScript is the language used in various NoSQL databases (e.g. CouchDB /MongoDB) so interfacing with them is a natural fit (e.g. MongoDB shell and query language is JS, CouchDB map/reduce is JS).</p>
+</li>
+<li><p>JavaScript is a compilation target and there are a number of languages that compile to it already.</p>
+</li>
+<li><p>Node.js uses one virtual machine (V8) that keeps up with the ECMAScript standard. In other words, we don’t have to wait for all the browsers to catch up to use new JavaScript language features in Node.js</p>
+</li>
+</ul>
+<h2 id="asynchronous-and-evented-">Asynchronous and Evented:</h2>
+<p>Node.js provides an event-driven and asynchronous platform for server-side JavaScript. It brings JavaScript to the server much in the same way a browser brings JavaScript to the client. It is important to understand how the browser works in order to understand how Node works. Both are event-driven (i.e. use an event loop) and non-blocking when handling I/O (i.e. use asynchronous I/O). Let’s look an example to explain what that means.</p>
+<p>Take this common snippet of jQuery performing an Ajax request using XHR   [XML Http Request]</p>
+<pre><code class="lang-javascript">$result = mysql_query(&#39;SELECT * FROM myTable&#39;);
+print_r($result);
+</code></pre>
+<p>We are doing some I/O and the process is blocked from continuing until all the data has come back. For many applications this model is fine and is easy to follow. What may not be apparent is that the process has state/memory and is essentially doing &quot;nothing&quot; until the I/O is completed. That could take 10ms to minutes depending on the latency of the I/O operation. Latency can be unexpected as well, for example:</p>
+<ul>
+<li>The disk is performing a maintainence operation, pausing reads/writes</li>
+<li>A database query is slower because of increased load</li>
+<li>Pulling a resource from &quot;sitexyz.com&quot; is sluggish today for some reason</li>
+</ul>
+<p>If a program blocks on I/O, what does the server do when there are more requests to handle? Typically this means that we use a multi-threaded approach. A common implementation is to use one thread per connection and setup a thread pool for those connections. You can think of threads as computational workspaces in which the processor works on one task. In many cases, a thread is contained inside a process and maintains its own working memory. Each thread handles one or more server connections. While this sounds like a natural way to delegate server labor, to developers who&#39;ve been doing this a long time, managing threads within an application can be complex. Also, when a large number of threads is needed to handle many concurrent server connections, threading can tax operating system resources. Threads require CPU to perform context-switches as well as additional RAM.</p>
+<p>To illustrate this, let&#39;s look at a benchmark (shown in Figure) comparing NGINX and Apache. NGINX is an HTTP server like Apache but instead of using the multi-threaded approach with blocking I/O, it uses an event loop with asynchronous I/O (like the browser and Node.js). Because of these design choices, NGINX is often able to handle more requests and connected clients, making it a more responsive solution.</p>
+<p>In Node.js, I/O is almost always performed outside of the main event loop allowing the server to stay efficient and responsive like NGINX. This makes it much harder for a process to become I/O bound because I/O latency isn’t going to crash your server or use the resources it would if you were blocking. It allows the server to be lightweight on what are typically the slowest operations a server performs.</p>
+<p>This mix of an event-driven and asynchronous model and the widely accessible JavaScript language helps open up a exciting world of data-intensive real-time applications</p>
+<h2 id="v8-javascript-engine">V8 JavaScript Engine</h2>
+<p>V8 is Google&#39;s open source JavaScript engine. It is written in C++ and is used in Google Chrome [the open source browser from Google]. The first version of the V8 engine was released at the same time as the first version of Chrome, September 2, 2008.</p>
+<p>V8 implements ECMAScript as specified in ECMA-262, 5th edition, and runs on Windows (XP or newer), Mac OS X (10.5 or newer), and Linux systems that use IA-32, x64, or ARM processors. V8 can run standalone, or can be embedded into any C++ application.</p>
+<p>V8 compiles JavaScript to native machine code (IA-32, x86-64, ARM, or MIPS ISAs) before executing it, instead of more traditional techniques such as executing bytecode or interpreting it. The compiled code is additionally optimized (and re-optimized) dynamically at runtime, based on heuristics of the code&#39;s execution profile. Optimization techniques used include inlining, elision of expensive runtime properties, and inline caching, among many others.</p>
+<p>V8 is intended to be used both in a browser (notably in Chrome and Chromium browsers) and as a standalone high-performance engine that can be integrated into independent projects, for example server-side JavaScript in Node.js, or client side JavaScript in .NET/Mono using V8.NET.</p>
+<h2 id="meteor-js">Meteor.js</h2>
+<p>Meteor is an open-source JavaScript web application framework, that make building web apps easier, simpler, and faster. It was first introduced in December 2011 under the name Skybreak. At its core is the Distributed Data Protocol. Its release was the largest in Hacker-News history. Among open source projects, it is also the third most starred GitHub repository in 2012.</p>
+<p>Not only is Meteor entirely real-time (meaning any change to your database is automatically reflected live in the browser), but the fact that it uses JavaScript on both the client and server means that we don&#39;t have to juggle with multiple languages and environments anymore.</p>
+<h4 id="features-of-meteor-js-">Features of Meteor.js:</h4>
+<ul>
+<li><p>Pure JavaScript.
+We can write our entire app in pure JavaScript. All the same APIs are available on the client and the server — including database APIs! — so the same code can easily run in either environment.</p>
+</li>
+<li><p>Live page updates.
+We just write our templates &amp; they automatically update when data in the database changes. No more boilerplate redraw code needs to be written. It also supports any templating language.</p>
+</li>
+<li><p>Clean, powerful data synchronization.
+We can write our client code as if it were running on the server and had direct access to the database. No more loading data from REST endpoints needs to be done.</p>
+</li>
+<li><p>Latency compensation.
+When a user makes a change, their screen updates immediately — no waiting for the server. If the server rejects their request or executes it differently, the client is patched up with what actually happened.</p>
+</li>
+<li><p>Hot Code Pushes.
+We can update our app while users are connected without disturbing them. When we push a new version, the new code is seamlessly injected into each browser frame in which the app is open.</p>
+</li>
+<li><p>Sensitive code runs in a privileged environment.
+We can write all of your code in JavaScript (if we want.) The user interface runs in our browser. The sensitive functions run in a privileged server environment.</p>
+</li>
+<li><p>Fully self-contained application bundles.
+We use only one command to compile our entire application into a tarball. We can unpack it anywhere and run one command, and our app is working. We&#39;re never locked into a particular hosting provider; we have all the code for the platform.</p>
+</li>
+<li><p>Interoperability.
+We can connect anything to Meteor, from native mobile apps to legacy databases to Arduinos. We just need to implement the simple DDP protocol.</p>
+</li>
+<li><p>Smart Packages.
+Meteor&#39;s Smart Packages are actually little programs that can inject code into the client or the server, or even hook into the bundler to preprocess your source. Great care has been taken to give the core Meteor packages the minimal set of dependencies, so we can use our favorite templating, testing, or DOM manipulation frameworks.</p>
+</li>
+</ul>
+<h2 id="ddp-distributed-data-protocol-">DDP [Distributed Data Protocol]</h2>
+<p>DDP is a standard way to solve the biggest problem facing client-side JavaScript developers: querying a server-side database, sending the results down to the client, and then pushing changes to the client whenever anything changes in the database.</p>
+<p>On the server, we define realtime queries using Meteor.publish. We can pass an arbitrary JavaScript function to Meteor.publish, so we can publish data from any source: our database, IMAP, or the forklifts in our warehouse.</p>
+<p>On the client, we call Meteor.subscribe to connect to a publication endpoint, receive the data, and listen for updates. The data is inserted directly into Meteor&#39;s client-side cache, so we can bind our HTML templates to it and they&#39;ll update automatically.</p>
+<p>Meteor&#39;s DDP implementation handles the rest. It intelligently polls our database to pick up changes and push them down to the client. And it can simulate our model code on the client, so our users see their screens update immediately without waiting for the network.</p>
+<p>DDP is a very simple protocol. It&#39;s just a codification of what we would inevitably write ourselves if we built this by hand. Because it&#39;s so simple, it&#39;s also general. DDP can work with any database, framework, or programming language, and it can work on servers, clients, and mobile devices. In fact, we can call Meteor.connect to connect to any DDP server such as a Meteor app written by someone else! , and make real-time subscriptions to any data it is publishing.</p>
+<p>Along with DDP, top-requested feature has been added: “server-side methods”. Clients can call arbitrary JavaScript functions that we define on the server. Meteor uses reconnection and a replay cache to ensure that methods execute exactly once. (Never twice by accident, like in our hand-written XHR code.)</p>
+<h2 id="nosql">NoSQL</h2>
+<p>A NoSQL database provides a mechanism for storage and retrieval of data that is modeled in means other than the tabular relations used in relational databases. Motivations for this approach include simplicity of design, horizontal scaling and finer control over availability. NoSQL databases are often highly optimized key–value stores intended primarily for simple retrieval and appending operations, whereas an RDBMS is intended as a general purpose data store. There will thus be some operations where NoSQL is faster and some where an RDBMS is faster. NoSQL databases are finding significant and growing industry use in big data and real-time web applications. NoSQL systems are also referred to as &quot;Not only SQL&quot; to emphasize that they may in fact allow SQL-like query languages to be used.</p>
+<h3 id="mongodb">MongoDB</h3>
+<p>MongoDB (from &quot;humongous&quot;) is an open-source document database that provides high performance, high availability, and automatic scaling, and is the leading NoSQL database, written in C++.</p>
+<p>Document Database
+A record in MongoDB is a document, which is a data structure composed of field and value pairs. MongoDB documents are similar to JSON objects. The values of fields may include other documents, arrays, and arrays of documents.  A MongoDB document.
+The advantages of using documents are:</p>
+<ul>
+<li>Documents (i.e. objects) correspond to native data types in many programming language.</li>
+<li>Embedded documents and arrays reduce need for expensive joins.</li>
+<li>Dynamic schema supports fluent polymorphism.
+Key Features:
+High Performance
+MongoDB provides high performance data persistence. In particular:</li>
+<li>Support for embedded data models reduces I/O activity on database system.</li>
+<li>Indexes support faster queries and can include keys from embedded documents and arrays.
+High Availability
+To provide high availability, MongoDB’s replication facility, called replica sets, provide:</li>
+<li>automatic failover.</li>
+<li>data redundancy.
+a replica set is a group of mongodb servers that maintain the same data set, providing redundancy and increasing data availability.
+automatic scaling
+mongodb provides horizontal scalability as part of its core functionality.</li>
+<li>automatic sharing distributes data across a cluster of machines.</li>
+<li><p>replica sets can provide eventually-consistent reads for low-latency high throughput deployments.</p>
+<p>websocket
+websocket is a protocol providing full-duplex communications channels over a single tcp connection. the websocket protocol was standardized by the ietf as rfc 6455 in 2011, and the websocket api in web idl is being standardized by the w3c.</p>
+</li>
+</ul>
+<p>websocket is designed to be implemented in web browsers and web servers, but it can be used by any client or server application. the websocket protocol is an independent tcp-based protocol. its only relationship to http is that its handshake is interpreted by http servers as an upgrade request. the websocket protocol makes possible more interaction between a browser and a web site, facilitating live content and the creation of real-time games. this is made possible by providing a standardized way for the server to send content to the browser without being solicited by the client, and allowing for messages to be passed back and forth while keeping the connection open. in this way a two-way (bi-directional) ongoing conversation can take place between a browser and the server. a similar effect has been achieved in non-standardized ways using stop-gap technologies such as comet.</p>
+<p>in addition, the communications are done over tcp port number 80, which is of benefit for those environments which block non-web internet connections using a firewall. websocket protocol is currently supported in several browsers including google chrome, internet explorer, firefox, safari and opera. websocket also requires web applications on the server to support it.</p>
+<p>unlike http, websocket provides for full-duplex communication. additionally, websocket enables streams of messages on top of tcp. tcp alone deals with streams of bytes with no inherent concept of a message. before websocket, port 80 full-duplex communication was attainable using comet channels; however, comet implementation is nontrivial, and due to the tcp handshake and http header overhead, it is inefficient for small messages. websocket protocol aims to solve these problems without compromising security assumptions of the web.</p>
+<p>a secure version of the websocket protocol is implemented in firefox 6, safari 6, google chrome 14, opera 12.10 and internet explorer 10.</p>
+<p>an older, less secure version of the protocol was implemented in opera 11 and safari 5, as well as the mobile version of safari in ios 4.2. also, the blackberry browser in os7 implements websocket. although there are no known exploits, it was disabled in firefox 4 and 5, and opera 11.</p>
+<p>websocket protocol client implementations try to detect if the user agent is configured to use a proxy when connecting to destination host and port and, if it is, uses http connect method to set up a persistent tunnel.</p>
+<p>while the websocket protocol itself is unaware of proxy servers and firewalls, it features an http-compatible handshake so that http servers can share their default http and https ports (80 and 443) with a websocket gateway or server. the websocket protocol defines a ws:// and wss:// prefix to indicate a websocket and a websocket secure connection, respectively. both schemes use an http upgrade mechanism to upgrade to the websocket protocol. some proxy servers are transparent and work fine with websocket; others will prevent websocket from working correctly, causing the connection to fail. in some cases, additional proxy server configuration may be required, and certain proxy servers may need to be upgraded to support websocket.</p>
+<p>if unencrypted websocket traffic flows through an explicit or a transparent proxy server on its way to the websocket server, then, whether or not the proxy server behaves as it should, the connection is almost certainly bound to fail today (as websocket become more mainstream, proxy servers may become websocket aware). therefore, unencrypted websocket connections should be used only in the simplest topologies.</p>
+<p>if an encrypted websocket connection is used, then the use of transport layer security (tls) in the websocket secure connection ensures that an http connect command is issued when the browser is configured to use an explicit proxy server. this sets up a tunnel, which provides low-level end-to-end tcp communication through the http proxy, between the websocket secure client and the websocket server. in the case of transparent proxy servers, the browser is unaware of the proxy server, so no http connect is sent. however, since the wire traffic is encrypted, intermediate transparent proxy servers may simply allow the encrypted traffic through, so there is a much better chance that the websocket connection will succeed if websocket secure is used. using encryption is not free of resource cost, but often provides the highest success rate.</p>
+<p>a mid-2010 draft (version hixie-76) broke compatibility with reverse-proxies and gateways by including 8 bytes of key data after the headers, but not advertising that data in a content-length: 8 header. this data was not forwarded by all intermediates, which could lead to protocol failure. more recent drafts (e.g., hybi-09) put the key data in a sec-websocket-key header, solving this problem.</p>
+<p>the websocket protocol specification defines two new uri schemes, ws: and wss:,] for unencrypted and encrypted connections respectively. apart from the scheme name, the rest of the uri components are defined to use uri generic syntax.
+
+sock.js
+sock.js is a browser javascript library that provides a websocket-like object. sock.js gives us a coherent, cross-browser, javascript api which creates a low latency, full duplex, cross-domain communication channel between the browser and the web server.</p>
+<p>under the hood sock.js tries to use native websockets first. if that fails it can use a variety of browser-specific transport protocols and presents them through websocket-like abstractions.</p>
+<p>sock.js is intended to work for all modern browsers and in environments which don&#39;t support websocket protocol, for example behind restrictive corporate proxies.</p>
+<p>sock.js-client does require a server counterpart. sock.js-node is a sock.js server for node.js.</p>
+<p>philosophy:</p>
+<pre><code>•   the api should follow html5 websockets api as closely as possible.
+•   all the transports must support cross domain connections out of the box. it&#39;s possible and recommended to host sock.js server on different server than your main web site.
+•   there is a support for at least one streaming protocol for every major browser.
+•   streaming transports should work cross-domain and should support cookies (for cookie-based sticky sessions).
+•   polling transports are be used as a fallback for old browsers and hosts behind restrictive proxies.
+•   connection establishment should be fast and lightweight.
+•   no flash inside (no need to open port 843 - which doesn&#39;t work through proxies, no need to host &#39;crossdomain.xml&#39;, no need to wait for 3 seconds in order to detect problems)
+</code></pre><p>connecting to sock.js without the client
+although the main point of sock.js it to enable browser-to-server connectivity, it is possible to connect to sock.js from an external application. any sock.js server complying with 0.3 protocol does support a raw websocket url. the raw websocket url for the test server looks like:</p>
+<p>ws://localhost:8081/echo/websocket</p>
+<p>we can connect any websocket rfc 6455 compliant websocket client to this url. this can be a command line client, external application, third party code or even a browser.
+
+handlebars.js</p>
+<p>handlebars.js is an extension to the mustache templating language created by chris wanstrath. handlebars.js and mustache are both logicless templating languages that keep the view and the code separated handlebars provides the power necessary to let us build semantic templates effectively.</p>
+<p>mustache templates are compatible with handlebars, so we can take a mustache template, import it into handlebars, and start taking advantage of the extra handlebars features.</p>
+<p>handlebars.js supports extended expression syntax that we call paths. paths are made up of typical expressions and  characters. expressions allow us to not only display data from the current context, but to display data from contexts that are descendants and ancestors of the current context.</p>
+<p>to display data from descendant contexts, we use the “ . ” character. example, if our data were structured like:</p>
+<p>var data = {&quot;person&quot;: { &quot;name&quot;: &quot;bassam&quot; }, &quot;company&quot;: {&quot;name&quot;: &quot;fat arrow&quot; } };</p>
+<p>we could display the person&#39;s name from the top-level context with the following expression:</p>
+<p>{{person.name}}</p>
+<p>we can backtrack using ../. for example, if we have already traversed into the person object we could still display the company&#39;s name with an expression like {{../company.name}}, so:</p>
+<p>{{#person}}{{name}} - {{../company.name}}{{/person}}</p>
+<p>would render:</p>
+<p>bassam - fat arrow.
+
+bootstrap (front-end framework)</p>
+<p>bootstrap is a free collection of tools for creating websites and web applications. it contains html and css-based design templates for typography, forms, buttons, navigation and other interface components, as well as optional javascript extensions.</p>
+<p>it is the most popular project on github and has been used by nasa and msnbc among others.</p>
+<p>origin</p>
+<p>bootstrap was developed by mark otto and jacob thornton at twitter as a framework to encourage consistency across internal tools. before bootstrap, various libraries were used for interface development, which led to inconsistencies and a high maintenance burden. according to twitter developer mark otto, in the face of those challenges:</p>
+<p>&quot;...[a] super small group of developers and i got together to design and build a new internal tool and saw an opportunity to do something more. through that process, we saw ourselves build something much more substantial than another internal tool. months later, we ended up with an early version of bootstrap as a way to document and share common design patterns and assets within the company.&quot;</p>
+<p>the first deployment under real conditions happened during twitter&#39;s first hackweek.&quot; mark otto showed some colleagues how to accelerate their project&#39;s development with the help of the toolkit. as a result, dozens of teams have moved to the framework.
+in august, 2011 twitter released bootstrap as open source. in february 2012, it was the most popular github development project.</p>
+<p>features</p>
+<p>bootstrap has relatively incomplete support for html5 and css3, but it is compatible with all major browsers. basic information of compatibility of websites or applications is available for all devices and browsers. there is a concept of partial compatibility that makes the basic information of a website available for all devices and browsers. for example, the properties introduced in css3 for rounded corners, gradients and shadows are used by bootstrap despite lack of support by older web browsers. these extend the functionality of the toolkit, but are not required for its use.</p>
+<p>since version 2.0 it also supports responsive design. this means the layout of web pages adjusts dynamically, taking into account the characteristics of the device used (pc, tablet, mobile phone).</p>
+<p>bootstrap is open source and available on github. developers are encouraged to participate in the project and make their own contributions to the platform.
+recently, community members have translated bootstrap&#39;s documentation into various languages, including chinese, spanish and russian.</p>
+<p>structure and function</p>
+<p>bootstrap is modular and consists essentially of a series of less stylesheets that implement the various components of the toolkit. a stylesheet called bootstrap.less includes the components stylesheets. developers can adapt the bootstrap file itself, selecting the components they wish to use in their project.</p>
+<p>adjustments are possible to a limited extent through a central configuration stylesheet. more profound changes are possible by the less declarations.</p>
+<p>the use of less stylesheet language allows the use of variables, functions and operators, nested selectors, as well as so-called mixins.</p>
+<p>since version 2.0, the configuration of bootstrap also has a special &quot;customize&quot; option in the documentation. moreover, the developer chooses on a form the desired components and adjusts, if necessary, the values of various options to their needs. the subsequently generated package already includes the pre-built css style sheet.</p>
+<p>grid system and responsive design
+bootstrap comes standard with a 940 pixel wide, grid layout. alternatively, the developer can use a variable-width layout. for both cases, the toolkit has four variations to make use of different resolutions and types of devices: mobile phones, portrait and landscape, tablets and pcs with low and high resolution. each variation adjusts the width of the columns.</p>
+<p>understanding the css stylesheet
+bootstrap provides a set of stylesheets that provide basic style definitions for all key html components. these provide a uniform, modern appearance for formatting text, tables and form elements.</p>
+<p>re-usable components
+in addition to the regular html elements, bootstrap contains other commonly used interface elements. these include buttons with advanced features (e.g. grouping of buttons or buttons with drop-down option, make and navigation lists, horizontal and vertical tabs, navigation, breadcrumb navigation, pagination, etc.), labels, advanced typographic capabilities, thumbnails, warning messages and a progress bar.</p>
+<p>javascript components
+bootstrap comes with several javascript components in the form of jquery plugins. they provide additional user interface elements such as dialog boxes, tooltips, and carousels. they also extend the functionality of some existing interface elements, including for example an auto-complete function for input fields. in version 2.0, the following javascript plugins are supported: modal, dropdown, scrollspy, tab, tooltip, popover, alert, button, collapse, carousel and typeahead.</p>
+<p>an implementation of twitter bootstrap using the dojo toolkit is also available. it is called dojo bootstrap and is a port of the twitter bootstrap plugins. it uses 100% dojo code and has support for amd (asynchronous module definition).</p>
+<p>likewise you can also find bootstrap controls for angularjs called ui bootstrap. this is also a port that reuses the bootstrap markup.</p>
+<p>use
+to use bootstrap in an html page, the developer downloads the bootstrap css stylesheet and includes a link in the html file.</p>
+<p>a bootstrap-designed document shown in mozilla firefox 10
+(the developer can also compile css file from the downloaded less stylesheets, with a special compiler.)</p>
+<p>if the developer wants to use the javascript components, they must be referenced along with the jquery library in the html document.</p>
+<p>the following example illustrates how this works. the html code defines a simple search form and a list of results in tabular form. the page consists of html 5 elements and css information according to the bootstrap documentation. the figure shows the representation of the document in mozilla firefox 10.</p>
+<p>&lt;!doctype html&gt;</p>
+<html>
+  <head>
+    <title>example of twitter bootstrap</title>
+    <!-- include the bootstrap stylesheets -->
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  </head>
+<body>
+……
+</body>
+</html>
+
+
+          
+        
+
+        
+      </div>
+
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

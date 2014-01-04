@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Message List Manager</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          
+          <h1 id="message-list-manager">Message List Manager</h1>
+<p>Manager are the most crucial part of our application and do most of the heavy pulling for us. Here we have two manager, one for pulling out data from the database and other for listening to events and acting on them.</p>
+<p>The first helper uses MongoDB&#39;s protocal to find all the data from the <code>Messages</code> collection and store it in the msgs variable. The other helper is used for verification to check if a particular message is added by the logged in user. This is used to check and add the delete button.</p>
+<p>The event listener in our template manager is used to listen to events. Here it is being used to delete the message. It grabs the <code>id</code> of the message and passes it to <code>Message.remove(id)</code> on clicking the button with <code>.delete</code> class.</p>
+
+          
+            <div class='highlight'><pre>Template.messageList.helpers({
+    <span class="attribute">msgs</span>: <span class="reserved">function</span>() {
+        <span class="keyword">return</span> Messages.find();
+    },
+
+    <span class="attribute">myMsgs</span>: <span class="reserved">function</span>() {
+        <span class="keyword">return</span> this.owner == Meteor.userId()
+    }
+});
+
+
+Template.messageList.events({
+    <span class="string">'click .delete'</span>: <span class="reserved">function</span>(e) {
+        e.preventDefault();
+
+        <span class="reserved">var</span> id = this._id;
+        console.log(id);
+        Messages.remove(id);
+    }
+});</pre></div>
+          
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="collection.html">
+                    collection.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="bootstrap.html">
+                    bootstrap.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="v8.html">
+                    v8.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="handlebars.html">
+                    handlebars.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="javascript.html">
+                    javascript.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="meteor.html">
+                    meteor.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="node.html">
+                    node.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="nosql.html">
+                    nosql.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="v8.html">
+                    v8.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="websocket.html">
+                    websocket.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="handlebarsHelper.html">
+                    handlebarsHelper.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messagelistHelper.html">
+                    messagelistHelper.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="newmessageHelper.html">
+                    newmessageHelper.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="about.html">
+                    about.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="certificate.html">
+                    certificate.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="application.html">
+                    application.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="messageList.html">
+                    messageList.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="newMessage.html">
+                    newMessage.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

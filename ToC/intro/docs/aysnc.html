@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>aysnc.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>aysnc.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="aysnc.html">
+                    aysnc.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="javascript.html">
+                    javascript.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="node.html">
+                    node.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2 id="asynchronous-and-evented-">Asynchronous and Evented:</h2>
+<p>Node.js provides an event-driven and asynchronous platform for server-side JavaScript. It brings JavaScript to the server much in the same way a browser brings JavaScript to the client. It is important to understand how the browser works in order to understand how Node works. Both are event-driven (i.e. use an event loop) and non-blocking when handling I/O (i.e. use asynchronous I/O). Let’s look an example to explain what that means.</p>
+<p>Take this common snippet of jQuery performing an Ajax request using XHR   [XML Http Request]</p>
+<pre><code class="lang-javascript">$result = mysql_query(&#39;SELECT * FROM myTable&#39;);
+print_r($result);
+</code></pre>
+<p>We are doing some I/O and the process is blocked from continuing until all the data has come back. For many applications this model is fine and is easy to follow. What may not be apparent is that the process has state/memory and is essentially doing &quot;nothing&quot; until the I/O is completed. That could take 10ms to minutes depending on the latency of the I/O operation. Latency can be unexpected as well, for example:</p>
+<ul>
+<li>The disk is performing a maintainence operation, pausing reads/writes</li>
+<li>A database query is slower because of increased load</li>
+<li>Pulling a resource from &quot;sitexyz.com&quot; is sluggish today for some reason</li>
+</ul>
+<p>If a program blocks on I/O, what does the server do when there are more requests to handle? Typically this means that we use a multi-threaded approach. A common implementation is to use one thread per connection and setup a thread pool for those connections. You can think of threads as computational workspaces in which the processor works on one task. In many cases, a thread is contained inside a process and maintains its own working memory. Each thread handles one or more server connections. While this sounds like a natural way to delegate server labor, to developers who&#39;ve been doing this a long time, managing threads within an application can be complex. Also, when a large number of threads is needed to handle many concurrent server connections, threading can tax operating system resources. Threads require CPU to perform context-switches as well as additional RAM.</p>
+<p>To illustrate this, let&#39;s look at a benchmark (shown in Figure) comparing NGINX and Apache. NGINX is an HTTP server like Apache but instead of using the multi-threaded approach with blocking I/O, it uses an event loop with asynchronous I/O (like the browser and Node.js). Because of these design choices, NGINX is often able to handle more requests and connected clients, making it a more responsive solution.</p>
+<p>In Node.js, I/O is almost always performed outside of the main event loop allowing the server to stay efficient and responsive like NGINX. This makes it much harder for a process to become I/O bound because I/O latency isn’t going to crash your server or use the resources it would if you were blocking. It allows the server to be lightweight on what are typically the slowest operations a server performs.</p>
+<p>This mix of an event-driven and asynchronous model and the widely accessible JavaScript language helps open up a exciting world of data-intensive real-time applications</p>
+
+        
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>
