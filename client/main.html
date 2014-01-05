@@ -5,7 +5,8 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <div class="navbar">
+<div class="wrapper preload">
+    <div class="navbar fadeInDown animated">
         <div class="navbar-inner">
             <a href="/" class="brand">Conversify</a>
             <ul class="nav pull-right">
@@ -15,16 +16,26 @@
             </ul>
         </div>
     </div>
-    <div class='row fluid'>
+    <div class='row fluid  fadeInUp animated"'>
         <div class="container">
             {{#if currentUser}}
                 {{> messageList}}
                 {{> newMessage}}
             {{else}}
-                <div class="well">
-                    <h3 class=text-center>Sign in to start chatting</h3>
-                </div>
+            <div class="banner">
+                    <h1>Conversify</h1>
+                    <img src="conversify.png" class="animated flipInX">
+            </div>
+            <div class="about">
+                <h3 class="intro">About</h3>
+                <p>Conversify is a web-based real-time chat application, designed for chatting in public. There is a pleasing design for both desktop and mobile browsers. Conversify supports <a href="http://www.emoji-cheat-sheet.com/">Emoji</a> too.</p>
+                <p>Conversify is built on top of Open Source technologies. We are using Meteor.js on both client and server side, apart from that we are using Bootstrap for some styling and Moment.js for generating beautiful timestamps. For authentication we are using Twitter OAuth which is the source for user meta information like Avatar and Name.</p>
+        </div>
+            <div class="footer">
+                <p class="inner">A project created, maintained, and designed by <a href="http://www.skippednote.com">Bassam Ismail</a>.<br> Many thanks to <a href="http://www.alvimurtaza.com">Alvi Murtaza</a> and other contributors.<br>&copy; 2014 - <a href="http://www.skippednote.com">skippednote</a></p>
+            </div>
             {{/if}}
         </div>
+    </div>
     </div>
 </body>

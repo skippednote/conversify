@@ -14,7 +14,7 @@ Template.newMessage.events({
             date: new Date()
         };
 
-        Messages.insert(messageData);
-        $(e.target).find('[name=message]').val('');
+            Messages.insert(messageData);
+            $(e.target).find('[name=message]').val('');
     }
 });
