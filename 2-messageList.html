@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Message List Template</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          
+          <h1 id="message-list-template">Message List Template</h1>
+<p><img src="http://f.cl.ly/items/0l0w1H0G2a3v3L3g2z1T/Screen%20Shot%202014-01-05%20at%203.20.11%20pm.png" alt="Application Template">
+This template is used to iterate over all messages from the <code>Messages</code> collection and pull out various fields from it. The <code>{{each}}</code> iterates over the <code>msgs</code> data source which is the JSON payload we have pulled out from the collection. This gives us the following fields stored in the db:</p>
+<ul>
+<li>Message</li>
+<li>Date</li>
+<li>Author</li>
+<li>Message ID</li>
+<li>Authors Avatar</li>
+</ul>
+<p>We use handlebars partials to render these variables to the user like <code>{{message}}</code>, <code>{{author}}</code>, <code>{{avatar}}</code>.</p>
+<p>If a particular message is added by the user he will get a button to delete it next to the message. This functionality is attained by wrapping the button within the <code>{{#if myMsgs}}</code> condition, it check whether the ID of user and post match.</p>
+
+          
+            <div class='highlight'><pre>&lt;template name=<span class="string">'messageList'</span>&gt;
+   &lt;h1&gt;Chat&lt;/h1&gt;
+    &lt;table <span class="class"><span class="keyword">class</span>="<span class="title">table</span> <span class="title">table</span>-<span class="title">striped</span>"&gt;</span>
+    {{<span class="comment">#each msgs}}</span>
+        &lt;tr&gt;
+            &lt;td <span class="class"><span class="keyword">class</span>="<span class="title">author</span>-<span class="title">message</span>"&gt;{{{<span class="title">message</span>}}}</span>
+                &lt;small&gt;( {{format-date date}} )&lt;/small&gt;
+                {{<span class="comment">#if myMsgs}}</span>
+                    &lt;button <span class="class"><span class="keyword">class</span>="<span class="title">btn</span> <span class="title">btn</span>-<span class="title">danger</span> <span class="title">delete</span>"&gt;<span class="title">Delete</span>&lt;/<span class="title">delete</span>&gt;</span>
+                {{/<span class="keyword">if</span>}}
+            &lt;/td&gt;
+            - &lt;td <span class="class"><span class="keyword">class</span>="<span class="title">author</span>-<span class="title">meta</span>"&gt;&lt;<span class="title">img</span> <span class="title">src</span>="{{<span class="title">avatar</span>}}" <span class="title">alt</span>="{{<span class="title">author</span>}}"&gt; {{<span class="title">author</span>}} &lt;/<span class="title">td</span>&gt;</span>
+        &lt;/tr&gt;
+    {{/each}}
+    &lt;/table&gt;
+&lt;/template&gt;</pre></div>
+          
+        
+
+        
+          <div class="toc vis">
+    <h3>Table of Contents</h3>
+    <ol>
+
+
+        <li>
+            <a class="source" href="1-First.html">
+                Opening
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="2-Certificate.html">
+                Certificate
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="3-About.html">
+                About
+            </a>
+        </li>
+        
+        <br>
+
+        <li>
+            <a class="source" href="1-javascript.html">
+                Javascript
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="2-node.html">
+                Node.js
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="3-meteor.html">
+                Meteor.js
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="4-v8.html">
+                V8
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="5-websocket.html">
+                WebSocket
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="6-nosql.html">
+                NoSql
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="7-handlebars.html">
+                Handlebars.js
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="8-bootstrap.html">
+                Bootstrap
+            </a>
+        </li>
+
+        <br>
+
+        <li>
+            <a class="source" href="1-collection.html">
+                Collections
+            </a>
+        </li>
+
+         <br>
+
+        <li>
+            <a class="source" href="1-application.html">
+                Application Template
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="2-messageList.html">
+                Message List Template
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="3-newMessage.html">
+                New Message Template
+            </a>
+        </li>
+
+         <br>
+         
+        <li>
+            <a class="source" href="1-messagelistHelper.html">
+                Message List Helper
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="2-newmessageHelper.html">
+                New Message Helper
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="3-handlebarsHelper.html">
+                Handlebars Helper
+            </a>
+        </li>
+        <br>
+
+        <li>
+            <a class="source" href="conclusion.html">
+                Conclusion
+            </a>
+        </li>
+    </ol>
+    </div>
+        
+      </div>
+
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Handlebars.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          
+          <h1 id="handlebars-js">Handlebars.js</h1>
+<p>Handlebars.js is an extension to the mustache templating language created by Chris Wanstrath. Handlebars.js and Mustache are both logicless templating languages that keep the view and the code separated handlebars provides the power necessary to let us build semantic templates effectively.</p>
+<p>Mustache templates are compatible with handlebars, so we can take a mustache template, import it into handlebars, and start taking advantage of the extra handlebars features.</p>
+<p>Handlebars.js supports extended expression syntax that we call paths. Paths are made up of typical expressions and  characters. Expressions allow us to not only display data from the current context, but to display data from contexts that are descendants and ancestors of the current context.</p>
+<p>To display data from descendant contexts, we use the “ . ” character. example, if our data were structured like:</p>
+<pre><code>var data = {
+    &quot;person&quot;: {
+        &quot;name&quot;: &quot;skippednote&quot;
+    },
+    &quot;company&quot;: {
+        &quot;name&quot;: &quot;fat arrow&quot;
+    }
+};
+</code></pre><p>We could display the person&#39;s name from the top-level context with the following expression:</p>
+<pre><code>{{person.name}}
+</code></pre><p>We can backtrack using ../. for example, if we have already traversed into the person object we could still display the company&#39;s name with an expression like <code>{{../company.name}}</code>:</p>
+<pre><code>{{#person}}{{name}} - {{../company.name}}{{/person}}
+</code></pre>
+          
+        
+
+        
+          <div class="toc vis">
+    <h3>Table of Contents</h3>
+    <ol>
+
+
+        <li>
+            <a class="source" href="1-First.html">
+                Opening
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="2-Certificate.html">
+                Certificate
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="3-About.html">
+                About
+            </a>
+        </li>
+        
+        <br>
+
+        <li>
+            <a class="source" href="1-javascript.html">
+                Javascript
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="2-node.html">
+                Node.js
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="3-meteor.html">
+                Meteor.js
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="4-v8.html">
+                V8
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="5-websocket.html">
+                WebSocket
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="6-nosql.html">
+                NoSql
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="7-handlebars.html">
+                Handlebars.js
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="8-bootstrap.html">
+                Bootstrap
+            </a>
+        </li>
+
+        <br>
+
+        <li>
+            <a class="source" href="1-collection.html">
+                Collections
+            </a>
+        </li>
+
+         <br>
+
+        <li>
+            <a class="source" href="1-application.html">
+                Application Template
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="2-messageList.html">
+                Message List Template
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="3-newMessage.html">
+                New Message Template
+            </a>
+        </li>
+
+         <br>
+         
+        <li>
+            <a class="source" href="1-messagelistHelper.html">
+                Message List Helper
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="2-newmessageHelper.html">
+                New Message Helper
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="3-handlebarsHelper.html">
+                Handlebars Helper
+            </a>
+        </li>
+
+
+        <br>
+
+        <li>
+            <a class="source" href="conclusion.html">
+                Conclusion
+            </a>
+        </li>
+    </ol>
+    </div>
+        
+      </div>
+
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

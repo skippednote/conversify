@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Application Template</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          
+          <h1 id="application-template">Application Template</h1>
+<p>The Appplication template is the base of our application, it gets rendered on every page and has template partials where other templates get rendered.
+We start with the <code>head</code> tags instead of <code>html</code> as Meteor will automatically add in the relavant HTML5 <code>doctype</code> and <code>html</code> tags. If other templates have the <code>head</code> tags, those will be concatenated into one. We have UTF-8 tag for correct character encoding and viewport meta tag for scaling the content as per the viewport of the device it&#39;s getting rendered on.</p>
+<p><img src="http://f.cl.ly/items/2F1H3r3F3C3B0N0K1z2f/conversify.png" alt="Application Template"></p>
+<p>Next we have the menubar for our application, it has the link to homepage with name of the application, Conversify as the link to homepage. We have added some classes from Bootstrap to add a bit of styling to the application. On the right end we have option to Sign-in to the Application, which is necessary as one can&#39;t use it without authentication. For authentication of users we are using Twitter OAuth. On signing in well will get an option to Sign out. We are using <code>{{loginButton}}</code> handlebars partial to replace it with the Meteor authentication interface.</p>
+<p><img src="http://f.cl.ly/items/1g1e270q2T1F3o463h1c/sign-in.png" alt="Sign In"></p>
+<p>In the section below menubar we are rendering two more partials, one for rendering the messages list and other for the form for sending messages. These partials are wrapped in the <code>{{#if currentUser}}</code> handlebars block, this checks whether the user if authorized. If the user if signed in then it will show the messages list and message form to add new  messages else we will get a notification prompting us to login.</p>
+
+          
+            <div class='highlight'><pre>&lt;head&gt;
+    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;
+    &lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div <span class="class"><span class="keyword">class</span>="<span class="title">navbar</span>"&gt;</span>
+        &lt;div <span class="class"><span class="keyword">class</span>="<span class="title">navbar</span>-<span class="title">inner</span>"&gt;</span>
+            &lt;a href=<span class="string">"/"</span> <span class="class"><span class="keyword">class</span>="<span class="title">brand</span>"&gt;<span class="title">Conversify</span>&lt;/<span class="title">a</span>&gt;</span>
+              &lt;a <span class="class"><span class="keyword">class</span>="<span class="title">btn</span> <span class="title">btn</span>-<span class="title">navbar</span>" <span class="title">data</span>-<span class="title">toggle</span>="<span class="title">collapse</span>" <span class="title">data</span>-<span class="title">target</span>=".<span class="title">nav</span>-<span class="title">collapse</span>"&gt;</span>
+                &lt;span <span class="class"><span class="keyword">class</span>="<span class="title">icon</span>-<span class="title">bar</span>"&gt;&lt;/<span class="title">span</span>&gt;</span>
+                &lt;span <span class="class"><span class="keyword">class</span>="<span class="title">icon</span>-<span class="title">bar</span>"&gt;&lt;/<span class="title">span</span>&gt;</span>
+                &lt;span <span class="class"><span class="keyword">class</span>="<span class="title">icon</span>-<span class="title">bar</span>"&gt;&lt;/<span class="title">span</span>&gt;</span>
+              &lt;/a&gt;
+            &lt;ul <span class="class"><span class="keyword">class</span>="<span class="title">nav</span> <span class="title">pull</span>-<span class="title">right</span>"&gt;</span>
+                &lt;li&gt;
+                    {{loginButtons}}
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div <span class="class"><span class="keyword">class</span>='<span class="title">row</span> <span class="title">fluid</span>'&gt;</span>
+        &lt;div <span class="class"><span class="keyword">class</span>="<span class="title">container</span>"&gt;</span>
+            {{<span class="comment">#if currentUser}}</span>
+                {{&gt; messageList}}
+                {{&gt; newMessage}}
+            {{<span class="keyword">else</span>}}
+                &lt;div <span class="class"><span class="keyword">class</span>="<span class="title">well</span>"&gt;</span>
+                    &lt;h3 <span class="class"><span class="keyword">class</span>=<span class="title">text</span>-<span class="title">center</span>&gt;<span class="title">Sign</span> <span class="title">in</span> <span class="title">to</span> <span class="title">start</span> <span class="title">chatting</span>&lt;/<span class="title">h3</span>&gt;</span>
+                &lt;/div&gt;
+            {{/<span class="keyword">if</span>}}
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;</pre></div>
+          
+        
+
+        
+
+          <div class="toc vis">
+    <h3>Table of Contents</h3>
+    <ol>
+
+
+        <li>
+            <a class="source" href="1-First.html">
+                Opening
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="2-Certificate.html">
+                Certificate
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="3-About.html">
+                About
+            </a>
+        </li>
+        
+        <br>
+
+        <li>
+            <a class="source" href="1-javascript.html">
+                Javascript
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="2-node.html">
+                Node.js
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="3-meteor.html">
+                Meteor.js
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="4-v8.html">
+                V8
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="5-websocket.html">
+                WebSocket
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="6-nosql.html">
+                NoSql
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="7-handlebars.html">
+                Handlebars.js
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="8-bootstrap.html">
+                Bootstrap
+            </a>
+        </li>
+
+        <br>
+
+        <li>
+            <a class="source" href="1-collection.html">
+                Collections
+            </a>
+        </li>
+
+         <br>
+
+        <li>
+            <a class="source" href="1-application.html">
+                Application Template
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="2-messageList.html">
+                Message List Template
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="3-newMessage.html">
+                New Message Template
+            </a>
+        </li>
+
+         <br>
+         
+        <li>
+            <a class="source" href="1-messagelistHelper.html">
+                Message List Helper
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="2-newmessageHelper.html">
+                New Message Helper
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="3-handlebarsHelper.html">
+                Handlebars Helper
+            </a>
+        </li>
+        <br>
+
+        <li>
+            <a class="source" href="conclusion.html">
+                Conclusion
+            </a>
+        </li>
+    </ol>
+    </div>
+        
+      </div>
+
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

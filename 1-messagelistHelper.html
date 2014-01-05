@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Message List Manager</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          
+          <h1 id="message-list-manager">Message List Manager</h1>
+<p>Manager are the most crucial part of our application and do most of the heavy pulling for us. Here we have two manager, one for pulling out data from the database and other for listening to events and acting on them.</p>
+<p>The first helper uses MongoDB&#39;s protocal to find all the data from the <code>Messages</code> collection and store it in the msgs variable. The other helper is used for verification to check if a particular message is added by the logged in user. This is used to check and add the delete button.</p>
+<p>The event listener in our template manager is used to listen to events. Here it is being used to delete the message. It grabs the <code>id</code> of the message and passes it to <code>Message.remove(id)</code> on clicking the button with <code>.delete</code> class.</p>
+
+          
+            <div class='highlight'><pre>Template.messageList.helpers({
+    <span class="attribute">msgs</span>: <span class="reserved">function</span>() {
+        <span class="keyword">return</span> Messages.find();
+    },
+
+    <span class="attribute">myMsgs</span>: <span class="reserved">function</span>() {
+        <span class="keyword">return</span> this.owner == Meteor.userId()
+    }
+});
+
+
+Template.messageList.events({
+    <span class="string">'click .delete'</span>: <span class="reserved">function</span>(e) {
+        e.preventDefault();
+
+        <span class="reserved">var</span> id = this._id;
+        console.log(id);
+        Messages.remove(id);
+    }
+});</pre></div>
+          
+        
+
+        
+          <div class="toc vis">
+    <h3>Table of Contents</h3>
+    <ol>
+
+
+        <li>
+            <a class="source" href="1-First.html">
+                Opening
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="2-Certificate.html">
+                Certificate
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="3-About.html">
+                About
+            </a>
+        </li>
+        
+        <br>
+
+        <li>
+            <a class="source" href="1-javascript.html">
+                Javascript
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="2-node.html">
+                Node.js
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="3-meteor.html">
+                Meteor.js
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="4-v8.html">
+                V8
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="5-websocket.html">
+                WebSocket
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="6-nosql.html">
+                NoSql
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="7-handlebars.html">
+                Handlebars.js
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="8-bootstrap.html">
+                Bootstrap
+            </a>
+        </li>
+
+        <br>
+
+        <li>
+            <a class="source" href="1-collection.html">
+                Collections
+            </a>
+        </li>
+
+         <br>
+
+        <li>
+            <a class="source" href="1-application.html">
+                Application Template
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="2-messageList.html">
+                Message List Template
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="3-newMessage.html">
+                New Message Template
+            </a>
+        </li>
+
+         <br>
+         
+        <li>
+            <a class="source" href="1-messagelistHelper.html">
+                Message List Helper
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="2-newmessageHelper.html">
+                New Message Helper
+            </a>
+        </li>
+
+
+        <li>
+            <a class="source" href="3-handlebarsHelper.html">
+                Handlebars Helper
+            </a>
+        </li>
+        <br>
+
+        <li>
+            <a class="source" href="conclusion.html">
+                Conclusion
+            </a>
+        </li>
+    </ol>
+    </div>
+        
+      </div>
+
+      
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>
