@@ -18,8 +18,3 @@ Template.messageList.events({
         Messages.remove(id);
     }
 });
-
-Template.messageList.rendered = function () {
-      console.log("scrolltop is " + $('.messages').scrollTop());
-        $('.messages').scrollTop( $('.messages').prop("scrollHeight") );
-};
