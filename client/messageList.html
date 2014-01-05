@@ -3,6 +3,7 @@
     {{#each msgs}}
     {{#if myMsgs}}
     <li class=me>
+        <div class="wrap-msg">
         <div class="author-meta"><img src="{{avatar}}" alt="{{author}}"> <br> <span class="author">{{author}}</span> </div>
             <div class="author-message"><span class=msg>{{{message}}}</span>
                 <small>( {{format-date date}} )</small>
@@ -10,13 +11,16 @@
                     <button class="delete">x</delete>
                 {{/if}}
         </div>
+        </div>
         </li>
         {{else}}
         <li class=you>
+        <div class="wrap-msg">
             <div class="author-message"><span class=msg>{{{message}}}</span>
             <small>( {{format-date date}} )</small>
             </div>
             <div class="author-meta"><img src="{{avatar}}" alt="{{author}}"> <br> <span class="author">{{author}}</span> </div>
+            </div>
         </li>
         {{/if}}
     {{/each}}
